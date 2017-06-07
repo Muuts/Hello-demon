@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>web前端工程师简历</title>
+	<script type="text/javascript" src="js/modernizr.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<!--[if IE]>
+		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="wrapper active-page1">
+	  <div class="page page1">
+	  <div class="dom">
+	  	 <div class='page_one'>
+			<div class='portrait'>
+			</div>
+			<div class='pent'>
+				<p>生活是一种绵延不绝的渴望，渴望不断上升，变得更伟大而高贵。</p>
+			</div>
+			<div class="verp"></div>
+			<div class="deal">
+				<ul>
+					<li>刘向阳</li>
+					<li>前端开发工程师</li>
+					<li>muuts.github.io</li>
+				</ul>
+			</div>
+		  </div>
+	  </div>
+	  </div>
+	  <div class="page page2">
+	  <div class="dom">
+	 	 <div class="about">
+	 	 	<p>关于我</p>
+	 	 	<table>
+	 	 		<tbody>
+	 	 			
+	 	 			<tr align="center">
+	 	 				<td>年龄/22岁</td>
+	 	 				<td>学历/专科</td>
+	 	 				<td>坐标/佛山</td>
+	 	 				<td>状态/在职</td>
+	 	 			</tr>
+	 	 			<tr align="center">
+	 	 				<td><img src="image/04.png"></td>
+	 	 				<td><img src="image/08.png"></td>
+	 	 				<td><img src="image/10.png"></td>
+	 	 				<td><img src="image/13.png"></td>
+	 	 			</tr>
+	 	 		</tbody>
+	 	 	</table>
+	 	 	<ul class="my_ed">
+	 	 		<li>一年互联网经验,三个月全职前端开发经验</li>
+	 	 		<li>专注前后交互，移动端适配等问题</li>
+	 	 		<li>高效的自学能力,具备独立分析解决问题能力</li>
+	 	 		<li>强烈的自我驱动力,代码强迫症患者</li>
+	 	 	</ul>
+	 	 </div>
+	  </div>
+	  </div>
+	  <div class="page page3">
+	  <div class="dom">
+	  	<div class="skill">
+	  		<p>技能栈</p>
+	  		<ul class="skill_con">
+	  			<li>熟练使用bootstrap，jquery类库的指令封装</li>
+	  			<li>熟悉组件/插件开发，并有一定能力写JS代码</li>
+	  			<li>熟悉前端各移动端框架，有ionic项目经验</li>
+	  			<li>编码常思其健壮性，扩展性，维护性</li>
+	  			<li> To be continued ~</li>
+	  		</ul>
+	  	</div>
+	  </div>
+	  </div>
+	  <div class="page page4">
+	  <div class="dom">
+		<div class="suffer">
+			<p>经历</p>
+			<div class="box">
+			<p>德力信息科技有限公司</p>
+				<ul class="sign">
+					<li>2017年4月~2017年6月</li>
+					<li>网页开发兼移动端开发</li>
+					<li>"html5,css3,javascript,jquery,bootstrap等"</li>
+				</ul>
+				<ul class="cupt">
+					<li>负责企业站静态页开发</li>
+					<li>负责网站维护</li>
+					<li>负责公司项目移动端开发</li>
+					<li>同期工作之余提升自己原生JS的编码能力</li>
+				</ul>
+			</div>
+		</div>
+	  </div>
+	  </div>
+	</div>
+	<div class="nav-panel">
+	  <div class="scroll-btn up"></div>
+	  <div class="scroll-btn down"></div>
+	  <nav>
+	    <ul>
+	      <li data-target="1" class="nav-btn nav-page1 active"></li>
+	      <li data-target="2" class="nav-btn nav-page2"></li>
+	      <li data-target="3" class="nav-btn nav-page3"></li>
+	      <li data-target="4" class="nav-btn nav-page4"></li>
+	    </ul>
+	  </nav>
+	</div>
+	
+	<script src='js/stopExecutionOnTimeout.js?t=1'></script>
+	<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+	'use strict';
+	$(document).ready(function () {
+	    var $wrap = $('.wrapper'), pages = $('.page').length, scrolling = false, currentPage = 1, $navPanel = $('.nav-panel'), $scrollBtn = $('.scroll-btn'), $navBtn = $('.nav-btn');
+	    function manageClasses() {
+	        $wrap.removeClass(function (index, css) {
+	            return (css.match(/(^|\s)active-page\S+/g) || []).join(' ');
+	        });
+	        $wrap.addClass('active-page' + currentPage);
+	        $navBtn.removeClass('active');
+	        $('.nav-btn.nav-page' + currentPage).addClass('active');
+	        $navPanel.addClass('invisible');
+	        scrolling = true;
+	        setTimeout(function () {
+	            $navPanel.removeClass('invisible');
+	            scrolling = false;
+	        }, 1000);
+	    }
+	    function navigateUp() {
+	        if (currentPage > 1) {
+	            currentPage--;
+	            if (Modernizr.csstransforms) {
+	                manageClasses();
+	            } else {
+	                $wrap.animate({ 'top': '-' + (currentPage - 1) * 100 + '%' }, 1000);
+	            }
+	        }
+	    }
+	    function navigateDown() {
+	        if (currentPage < pages) {
+	            currentPage++;
+	            if (Modernizr.csstransforms) {
+	                manageClasses();
+	            } else {
+	                $wrap.animate({ 'top': '-' + (currentPage - 1) * 100 + '%' }, 1000);
+	            }
+	        }
+	    }
+	    $(document).on('mousewheel DOMMouseScroll', function (e) {
+	        if (!scrolling) {
+	            if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+	                navigateUp();
+	            } else {
+	                navigateDown();
+	            }
+	        }
+	    });
+	    $(document).on('click', '.scroll-btn', function () {
+	        if ($(this).hasClass('up')) {
+	            navigateUp();
+	        } else {
+	            navigateDown();
+	        }
+	    });
+	    $(document).on('click', '.nav-btn:not(.active)', function () {
+	        if (!scrolling) {
+	            var target = $(this).attr('data-target');
+	            if (Modernizr.csstransforms) {
+	                $wrap.removeClass(function (index, css) {
+	                    return (css.match(/(^|\s)active-page\S+/g) || []).join(' ');
+	                });
+	                $wrap.addClass('active-page' + target);
+	                $navBtn.removeClass('active');
+	                $(this).addClass('active');
+	                $navPanel.addClass('invisible');
+	                currentPage = target;
+	                scrolling = true;
+	                setTimeout(function () {
+	                    $navPanel.removeClass('invisible');
+	                    scrolling = false;
+	                }, 1000);
+	            } else {
+	                $wrap.animate({ 'top': '-' + (target - 1) * 100 + '%' }, 1000);
+	            }
+	        }
+	    });
+	});
+	</script>
+</body>
+</html>
